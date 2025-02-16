@@ -15,13 +15,12 @@ class Rpc extends worker.Rpc {
 		super({ cache: options.cache });
 	}
 
-	async getHelloWorld() {
-		const now = Date.now();
-
+	async getConnectionData() {
 		return {
-			cf: this.request.cf,
-			msg: 'Welcome to the edge!',
-			now
+			city: this.context.cf.city,
+			country: this.context.cf.country,
+			ip: this.context.headers.get('x-real-ip') || 'Unknown',
+			now: new Date().toISOString()
 		};
 	}
 
