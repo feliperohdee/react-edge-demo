@@ -19,6 +19,6 @@
 		}
 	],
 	"vars": {
-		"ENV": "test"
+		"ENV": "PRODUCTION"
 	}
 }
