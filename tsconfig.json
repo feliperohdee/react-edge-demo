@@ -1,0 +1,16 @@
+{
+	"compilerOptions": {
+		"paths": {
+			"@/*": ["./*"]
+		}
+	},
+	"files": [],
+	"references": [
+		{
+			"path": "./.tsconfig/tsconfig.main.json"
+		},
+		{
+			"path": "./.tsconfig/tsconfig.vite.json"
+		}
+	]
+}

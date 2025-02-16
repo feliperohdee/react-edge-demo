@@ -1,0 +1,35 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+Disallow: /backend/
+Disallow: /wp-admin/
+Disallow: /wp-includes/
+Disallow: /wp-content/plugins/
+Disallow: /wp-content/themes/
+Disallow: /cgi-bin/
+Disallow: /tmp/
+Disallow: /feed/
+Disallow: /trackback/
+Disallow: /comments/
+Disallow: /category/*/*
+Disallow: */trackback/
+Disallow: */feed/
+Disallow: */comments/
+Disallow: /*?*
+Disallow: /*.php$
+Disallow: /*.js$
+Disallow: /*.inc$
+Disallow: /*.css$
+
+# Allow crawling of specific search engine bots
+User-agent: Googlebot
+Allow: /*.js$
+Allow: /*.css$
+
+User-agent: Bingbot
+Allow: /*.js$
+Allow: /*.css$
+
+# Crawl-delay directive (in seconds)
+Crawl-delay: 10
