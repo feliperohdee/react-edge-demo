@@ -19,6 +19,11 @@ describe('/api/rpc/account', () => {
 	it('getConnectionData', async () => {
 		const res = await rpc.getConnectionData();
 
-		expect(res).toEqual({ city: 'Chicago', country: 'US', ip: '100::', now: expect.any(String) });
+		expect(res).toEqual({
+			city: 'Chicago',
+			country: 'US',
+			ip: '100::',
+			now: expect.any(String)
+		});
 	});
 });
