@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import app from 'react-edge/app';
 
-import icon from '/icon.jpeg';
+import icon from '/icon.png';
 
 const Layout = ({ children }: { children: ReactNode }) => {
 	return (
