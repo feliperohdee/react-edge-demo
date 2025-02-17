@@ -3,15 +3,11 @@ import worker from 'react-edge/worker';
 
 import types from '@/types';
 
-type ChildRpcOptions = {
-	cache: types.Worker.EdgeCache;
-	context: ExecutionContext;
-	env: types.Worker.Env;
-	rpc: Rpc;
-};
+type RpcOptions = { cache?: types.Worker.EdgeCache | null; context: ExecutionContext; env: types.Worker.Env };
+type ChildRpcOptions = RpcOptions & { rpc: Rpc };
 
 class Rpc extends worker.Rpc {
-	constructor(options: { cache: types.Worker.EdgeCache; context: ExecutionContext; env: types.Worker.Env }) {
+	constructor(options: RpcOptions) {
 		super({ cache: options.cache });
 	}
 
@@ -29,5 +25,5 @@ class Rpc extends worker.Rpc {
 	}
 }
 
-export { ChildRpcOptions };
+export { RpcOptions, ChildRpcOptions };
 export default Rpc;

@@ -2,5 +2,6 @@
 .dist
 .DS_Store
 .wrangler
+*-lock.json
 *.lock
 node_modules
