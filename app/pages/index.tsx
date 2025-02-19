@@ -40,7 +40,7 @@ const Index = () => {
 		<div className='flex h-screen w-full items-center justify-center bg-gray-900'>
 			<div className='max-w-sm space-y-3 text-center'>
 				<div className='flex flex-col items-center justify-center gap-4'>
-					<div className='bg-white p-4 rounded-md'>
+					<div className='rounded-md bg-white p-4'>
 						<img
 							src={logo}
 							className='w-20'

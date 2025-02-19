@@ -6,7 +6,7 @@ import { beforeEach, describe, expect, it } from 'vitest';
 import Rpc from '@/api/rpc';
 import { Worker } from '@/types';
 
-describe('/api/rpc', () => {
+describe('/api/rpc/users', () => {
 	let headers: Headers;
 	let rpc: App.RpcProxy.Test.Caller<Rpc>;
 
@@ -18,21 +18,27 @@ describe('/api/rpc', () => {
 				env: env as Worker.Env,
 				executionContext: createExecutionContext()
 			}),
-			{
-				cf: { city: 'Chicago', country: 'US' },
-				headers
-			}
+			{ headers }
 		);
 	});
 
-	it('getConnectionData', async () => {
-		const res = await rpc.getConnectionData();
+	it('$getByEmail', async () => {
+		// @ts-expect-error
+		const res = await rpc.users.$getByEmail('test', 'user@user.com');
 
 		expect(res).toEqual({
-			city: 'Chicago',
-			country: 'US',
-			ip: '100::',
-			now: expect.any(String)
+			email: 'user@user.com',
+			id: 'user-1',
+			name: 'John Doe',
+			namespace: 'test',
+			password: '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92'
 		});
+	});
+
+	it('$passwordMatch', async () => {
+		// @ts-expect-error
+		const res = await rpc.users.$passwordMatch('8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '123456');
+
+		expect(res).toBe(true);
 	});
 });

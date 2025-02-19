@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import app from 'react-edge/app';
 
+import { Toaster } from '@/app/components/ui/toaster';
 import icon from '/icon.png';
 
 const Layout = ({ children }: { children: ReactNode }) => {
@@ -18,8 +19,8 @@ const Layout = ({ children }: { children: ReactNode }) => {
 					href={icon}
 				/>
 			</app.Helmet>
-
 			{children}
+			<Toaster />
 		</>
 	);
 };

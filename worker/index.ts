@@ -6,7 +6,7 @@ import Rpc from '@/api/rpc';
 import types from '@/types';
 
 const handler = {
-	fetch: async (request: Request, env: types.Worker.Env, context: ExecutionContext) => {
+	fetch: async (request: Request, env: types.Worker.Env, executionContext: ExecutionContext) => {
 		const url = new URL(request.url);
 
 		if (url.pathname === '/favicon.ico') {
@@ -18,14 +18,14 @@ const handler = {
 		const cache = new worker.EdgeCache({
 			cache: caches.default,
 			config,
-			context,
+			executionContext,
 			host: url.host,
 			versionSuffix: `-${worker.meta.__BUILD_TIME__}`
 		});
 
 		const rpc = new Rpc({
 			cache,
-			context,
+			executionContext,
 			env
 		});
 

@@ -1,17 +1,11 @@
-import { ComponentType, createElement } from 'react';
 import app from 'react-edge/app';
 
-import layout from '@/app/layout';
-import index from '@/app/pages';
+import { withLayout } from '@/app/libs/utils';
+import authenticatedAppRoutes from '@/app/routes/app';
+import indexPage from '@/app/pages';
+import mainLayout from '@/app/layout-main';
+import sessionsRoutes from '@/app/routes/sessions';
 import types from '@/types';
-
-const withLayout = (component: ComponentType) => {
-	return () => {
-		return createElement(layout, {
-			children: createElement(component)
-		});
-	};
-};
 
 const router: types.App.Router = {
 	fallback: app.createRouteFallback({
@@ -22,12 +16,14 @@ const router: types.App.Router = {
 		}
 	}),
 	routes: [
+		...authenticatedAppRoutes,
+		...sessionsRoutes,
 		app.createRoute({
 			path: '/',
 			handler: {
 				page: {
 					cache: { ttlSeconds: 10 },
-					value: withLayout(index)
+					value: withLayout(mainLayout, indexPage)
 				}
 			}
 		})
