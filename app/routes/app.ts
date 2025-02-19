@@ -1,11 +1,11 @@
 import app from 'react-edge/app';
 
 import { withLayout } from '@/app/libs/utils';
-import authenticatedAppPage from '@/app/pages/app';
+import appPage from '@/app/pages/app';
 import mainLayout from '@/app/layout-main';
 import types from '@/types';
 
-const authenticatedAreaRoutes: types.App.RouteGroup = app.createRouteGroup({
+const appRoutes: types.App.RouteGroup = app.createRouteGroup({
 	path: '/app',
 	middlewares: async ({ rpc, defaultResponseHeaders, store }) => {
 		const { body, headers, ok } = await rpc.sessions.get.asObject(true);
@@ -32,11 +32,11 @@ const authenticatedAreaRoutes: types.App.RouteGroup = app.createRouteGroup({
 			path: '/',
 			handler: {
 				page: {
-					value: withLayout(mainLayout, authenticatedAppPage)
+					value: withLayout(mainLayout, appPage)
 				}
 			}
 		})
 	]
 });
 
-export default [authenticatedAreaRoutes];
+export default [appRoutes];
