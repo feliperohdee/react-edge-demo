@@ -5,7 +5,7 @@ import libs from 'react-edge/libs';
 import logo from '@/app/assets/cf-logo.png';
 import type { App } from '@/types';
 
-const Index = () => {
+const IndexPage = () => {
 	const [text, setText] = useState<string[]>([]);
 	const connectionData = app.useFetch((ctx: App.Context) => {
 		return ctx.rpc.getConnectionData();
@@ -64,4 +64,4 @@ const Index = () => {
 	);
 };
 
-export default Index;
+export default IndexPage;

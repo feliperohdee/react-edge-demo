@@ -8,7 +8,7 @@ import { Label } from '@/app/components/ui/label';
 import { useToast } from '@/app/hooks/use-toast';
 import types from '@/types';
 
-const Signin = () => {
+const SigninPage = () => {
 	const { toast } = useToast();
 	const signin = app.useLazyFetch(async ({ rpc }: types.App.Context, payload: types.App.Form.SubmitPayload) => {
 		if (payload.requiredErrorsCount > 0) {
@@ -100,4 +100,4 @@ const Signin = () => {
 	);
 };
 
-export default Signin;
+export default SigninPage;
