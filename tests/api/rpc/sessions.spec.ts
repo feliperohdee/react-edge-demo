@@ -7,7 +7,7 @@ import HttpError from 'use-http-error';
 import Rpc from '@/api/rpc';
 import { Worker } from '@/types';
 
-describe('/api/rpc/sessions', () => {
+describe('@/api/rpc/sessions', () => {
 	let headers: Headers;
 	let rpc: App.RpcProxy.Test.Caller<Rpc>;
 

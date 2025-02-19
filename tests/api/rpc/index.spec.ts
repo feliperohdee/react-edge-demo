@@ -6,7 +6,7 @@ import { beforeEach, describe, expect, it } from 'vitest';
 import Rpc from '@/api/rpc';
 import { Worker } from '@/types';
 
-describe('/api/rpc', () => {
+describe('@/api/rpc', () => {
 	let headers: Headers;
 	let rpc: App.RpcProxy.Test.Caller<Rpc>;
 
