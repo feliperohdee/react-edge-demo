@@ -6,6 +6,7 @@ import logo from '@/app/assets/cf-logo.png';
 import type { App } from '@/types';
 
 const IndexPage = () => {
+	const [loadedCount, setLoadedCount] = useState(0);
 	const [text, setText] = useState<string[]>([]);
 	const connectionData = app.useFetch((ctx: App.Context) => {
 		return ctx.rpc.getConnectionData();
@@ -53,11 +54,14 @@ const IndexPage = () => {
 				<button
 					className='rounded-md bg-gray-800 px-6 py-2 text-white transition-colors hover:bg-gray-700'
 					onClick={() => {
+						setLoadedCount(loadedCount + 1);
 						setText([]);
 						stream.fetch(Date.now());
 					}}
 				>
-					Load Stream Again
+					{__('Load Stream Again ({ count })', {
+						count: loadedCount
+					})}
 				</button>
 			</div>
 		</div>

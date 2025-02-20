@@ -3,7 +3,8 @@ import vite from 'react-edge/vite';
 
 const root = process.cwd();
 const viteConfig = vite.test({
-	inputPath: path.resolve(root, 'worker/index.ts'),
+	// not load entire project just for unit tests
+	inputPath: path.resolve(root, 'worker/index-test.ts'),
 	wranglerPath: path.resolve(root, 'wrangler.json')
 });
 

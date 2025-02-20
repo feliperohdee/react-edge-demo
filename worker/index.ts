@@ -1,6 +1,7 @@
 import worker from 'react-edge/worker';
 
 import config from '@/config';
+import i18n from '@/i18n';
 import router from '@/app';
 import Rpc from '@/api/rpc';
 import types from '@/types';
@@ -15,12 +16,23 @@ const handler = {
 			});
 		}
 
+		const lang = (() => {
+			const lang =
+				url.searchParams.get('lang') || worker.cookies.get(request.headers, 'lang') || request.headers.get('accept-language') || '';
+
+			if (!lang || !i18n[lang]) {
+				return 'en-us';
+			}
+
+			return lang;
+		})();
+
 		const cache = new worker.EdgeCache({
 			cache: caches.default,
 			config,
 			executionContext,
 			host: url.host,
-			versionSuffix: `-${worker.meta.__BUILD_TIME__}`
+			versionSuffix: `-${lang}-${worker.meta.__BUILD_TIME__}`
 		});
 
 		const rpc = new Rpc({
@@ -33,12 +45,22 @@ const handler = {
 			cache,
 			config,
 			cors: true,
+			i18n,
+			lang,
 			request,
 			router,
 			rpc
 		});
 
 		const res = await workerApp.fetch();
+
+		// if the lang is set in the url, set it in the cookie to persist user language choice
+		if (url.searchParams.has('lang')) {
+			return new Response(res.body, {
+				headers: worker.cookies.set(res.headers, 'lang', lang),
+				status: res.status
+			});
+		}
 
 		return res;
 	}

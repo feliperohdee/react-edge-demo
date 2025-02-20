@@ -85,7 +85,7 @@ const SigninPage = () => {
 							{__('Signin')}
 						</Button>
 						<p className='mt-4 text-center text-sm text-slate-600'>
-							{__("Don't have an account?")}{' '}
+							{__(`Don't have an account?`)}{' '}
 							<a
 								href='#'
 								className='text-blue-600 hover:underline'

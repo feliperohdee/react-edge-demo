@@ -1,0 +1,12 @@
+{
+	"Authentication failed": "Échec de l'authentification",
+	"Create account": "Créer un compte",
+	"Don't have an account?": "N'avez pas de compte ?",
+	"Email": "Email",
+	"Enter with your credentials to access your account": "Entrez vos identifiants pour accéder à votre compte",
+	"Load Stream Again ({ count })": "Recharger le flux ({ count })",
+	"Password": "Mot de passe",
+	"Signin": "Connexion",
+	"Signout": "Déconnexion",
+	"You're logged as": "Vous êtes connecté comme"
+}

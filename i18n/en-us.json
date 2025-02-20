@@ -1,0 +1,12 @@
+{
+	"Authentication failed": "Authentication failed",
+	"Create account": "Create account",
+	"Don't have an account?": "Don't have an account?",
+	"Email": "Email",
+	"Enter with your credentials to access your account": "Enter with your credentials to access your account",
+	"Load Stream Again ({ count })": "The Load Stream Again ({ count })",
+	"Password": "Password",
+	"Signin": "Signin",
+	"Signout": "Signout",
+	"You're logged as": "You're logged as"
+}

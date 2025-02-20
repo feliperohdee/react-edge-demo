@@ -17,5 +17,5 @@
 		"target": "ESNext",
 		"types": ["vite/client", "@cloudflare/workers-types/2023-07-01", "react-edge/types.global"]
 	},
-	"include": ["../api", "../app", "../libs", "../worker"]
+	"include": ["../api", "../app", "../libs", "../i18n", "../worker"]
 }
