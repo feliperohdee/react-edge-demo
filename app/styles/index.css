@@ -1,7 +1,7 @@
 @import './tailwind.css';
 
 .state-loading {
-	@apply text-transparent !important;
+	@apply !text-transparent;
 	@apply pointer-events-none;
 	@apply z-10;
 

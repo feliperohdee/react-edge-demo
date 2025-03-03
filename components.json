@@ -12,7 +12,7 @@
 	"style": "default",
 	"tailwind": {
 		"baseColor": "slate",
-		"config": "./tailwind.config.js",
+		"config": "",
 		"css": "./app/styles/index.css",
 		"cssVariables": true,
 		"prefix": ""
