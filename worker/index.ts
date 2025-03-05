@@ -5,6 +5,7 @@ import i18n from '@/i18n';
 import router from '@/app';
 import Rpc from '@/api/rpc';
 import types from '@/types';
+import workerContext from '@/worker/context';
 
 const handler = {
 	fetch: async (request: Request, env: types.Worker.Env, executionContext: ExecutionContext) => {
@@ -35,34 +36,39 @@ const handler = {
 			versionSuffix: `-${lang}-${worker.meta.__BUILD_TIME__}`
 		});
 
-		const rpc = new Rpc({
-			cache,
-			executionContext,
-			env
-		});
+		return workerContext.run(
+			{
+				cache,
+				env,
+				executionContext,
+				lang,
+				request
+			},
+			async () => {
+				const workerApp = new worker.AppWorkerEntry({
+					cache,
+					config,
+					cors: true,
+					i18n,
+					lang,
+					request,
+					router,
+					rpc: new Rpc()
+				});
 
-		const workerApp = new worker.AppWorkerEntry({
-			cache,
-			config,
-			cors: true,
-			i18n,
-			lang,
-			request,
-			router,
-			rpc
-		});
+				const res = await workerApp.fetch();
 
-		const res = await workerApp.fetch();
+				// if the lang is set in the url, set it in the cookie to persist user language choice
+				if (url.searchParams.has('lang')) {
+					return new Response(res.body, {
+						headers: worker.cookies.set(res.headers, 'lang', lang),
+						status: res.status
+					});
+				}
 
-		// if the lang is set in the url, set it in the cookie to persist user language choice
-		if (url.searchParams.has('lang')) {
-			return new Response(res.body, {
-				headers: worker.cookies.set(res.headers, 'lang', lang),
-				status: res.status
-			});
-		}
-
-		return res;
+				return res;
+			}
+		);
 	}
 };
 

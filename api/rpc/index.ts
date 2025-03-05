@@ -4,26 +4,15 @@ import worker from 'react-edge/worker';
 import App from '@/api/rpc/app';
 import Sessions from '@/api/rpc/sessions';
 import Users from '@/api/rpc/users';
-import types from '@/types';
-
-type RpcOptions = {
-	cache?: types.Worker.EdgeCache | null;
-	executionContext: ExecutionContext;
-	env: types.Worker.Env;
-};
+import workerContext from '@/worker/context';
 
 class Rpc extends worker.Rpc {
 	public app: App;
-	public env: types.Worker.Env;
-	public executionContext: ExecutionContext;
 	public sessions: Sessions;
 	public users: Users;
 
-	constructor(options: RpcOptions) {
-		super({ cache: options.cache });
-
-		this.env = options.env;
-		this.executionContext = options.executionContext;
+	constructor() {
+		super({ cache: workerContext.store.cache });
 
 		// authenticated rpc instances
 		this.app = new App(this);
