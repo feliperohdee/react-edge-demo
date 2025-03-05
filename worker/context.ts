@@ -3,7 +3,7 @@ import { AsyncLocalStorage } from 'async_hooks';
 import { Worker } from '@/types';
 
 type ContextStore = {
-	cache: Worker.EdgeCache;
+	cache: Worker.EdgeCache | null;
 	env: Worker.Env;
 	executionContext: ExecutionContext;
 	lang: string;
@@ -23,6 +23,7 @@ class Context {
 		return store;
 	}
 
+	run<R>(args: ContextStore, fn: () => R): R;
 	run<R>(args: ContextStore, fn: () => Promise<R>): Promise<R> {
 		return this.storage.run(args, fn);
 	}

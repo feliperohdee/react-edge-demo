@@ -1,14 +1,14 @@
 import worker from 'react-edge/worker';
 
+import { Worker } from '@/types';
 import config from '@/config';
 import i18n from '@/i18n';
 import router from '@/app';
 import Rpc from '@/api/rpc';
-import types from '@/types';
 import workerContext from '@/worker/context';
 
 const handler = {
-	fetch: async (request: Request, env: types.Worker.Env, executionContext: ExecutionContext) => {
+	fetch: async (request: Request, env: Worker.Env, executionContext: ExecutionContext) => {
 		const url = new URL(request.url);
 
 		if (url.pathname === '/favicon.ico') {

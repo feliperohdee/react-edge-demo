@@ -2,13 +2,13 @@ import HttpError from 'use-http-error';
 import worker from 'react-edge/worker';
 import zDefault from 'use-zod-default';
 
-import type Rpc from '@/api/rpc';
 import { JWT_SECRET } from '@/api/constants';
+import { Worker } from '@/types';
 import schema, { Sessions } from '@/api/rpc/sessions-schema';
-import types from '@/types';
+import type Rpc from '@/api/rpc';
 
 class SessionsRpc extends worker.Rpc {
-	private auth: types.Worker.AuthJwt;
+	private auth: Worker.AuthJwt;
 	private rpc: Rpc;
 
 	constructor(rpc: Rpc) {

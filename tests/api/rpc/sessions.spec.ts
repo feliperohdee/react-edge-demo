@@ -1,11 +1,10 @@
 import { App } from 'react-edge/types';
 import { beforeEach, describe, expect, it } from 'vitest';
-import { env, createExecutionContext } from 'cloudflare:test';
 import app from 'react-edge/app';
 import HttpError from 'use-http-error';
 
 import Rpc from '@/api/rpc';
-import { Worker } from '@/types';
+import testContext from '@/tests/api/test-context';
 
 describe('@/api/rpc/sessions', () => {
 	let headers: Headers;
@@ -17,14 +16,9 @@ describe('@/api/rpc/sessions', () => {
 			'x-real-ip': '100::'
 		});
 
-		rpc = app.rpcProxy.createTestCaller(
-			new Rpc({
-				cache: null,
-				env: env as Worker.Env,
-				executionContext: createExecutionContext()
-			}),
-			{ headers }
-		);
+		rpc = testContext(() => {
+			return app.rpcProxy.createTestCaller(new Rpc(), { headers });
+		});
 	});
 
 	describe('$get', () => {

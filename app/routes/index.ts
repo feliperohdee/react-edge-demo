@@ -1,13 +1,13 @@
 import app from 'react-edge/app';
 
+import { App } from '@/types';
 import { withLayout } from '@/app/libs/utils';
 import authenticatedAppRoutes from '@/app/routes/app';
 import indexPage from '@/app/pages';
 import mainLayout from '@/app/layout-main';
 import sessionsRoutes from '@/app/routes/sessions';
-import types from '@/types';
 
-const router: types.App.Router = {
+const router: App.Router = {
 	fallback: app.createRouteFallback({
 		handler: {
 			redirect: {

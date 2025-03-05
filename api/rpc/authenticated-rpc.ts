@@ -1,8 +1,8 @@
 import worker from 'react-edge/worker';
 
 import { Sessions } from '@/api/rpc/sessions-schema';
+import { Worker } from '@/types';
 import type Rpc from '@/api/rpc';
-import types from '@/types';
 
 class AuthenticatedRpc extends worker.Rpc {
 	protected rpc: Rpc;
@@ -14,7 +14,7 @@ class AuthenticatedRpc extends worker.Rpc {
 	}
 
 	// hook which runs before every request
-	async $onBeforeRequest(rpc: types.Worker.Rpc.Request) {
+	async $onBeforeRequest(rpc: Worker.Rpc.Request) {
 		// Enforces authentication at the root of the request tree, ensuring all child resources
 		// inherit this protection without needing explicit authentication checks at each level
 		const { payload } = await this.rpc.sessions.$get();

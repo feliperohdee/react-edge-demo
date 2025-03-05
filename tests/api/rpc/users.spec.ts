@@ -1,10 +1,9 @@
 import app from 'react-edge/app';
 import { App } from 'react-edge/types';
-import { env, createExecutionContext } from 'cloudflare:test';
 import { beforeEach, describe, expect, it } from 'vitest';
 
 import Rpc from '@/api/rpc';
-import { Worker } from '@/types';
+import testContext from '@/tests/api/test-context';
 
 describe('@/api/rpc/users', () => {
 	let headers: Headers;
@@ -12,14 +11,9 @@ describe('@/api/rpc/users', () => {
 
 	beforeEach(() => {
 		headers = new Headers({ host: 'localhost:8787', 'x-real-ip': '100::' });
-		rpc = app.rpcProxy.createTestCaller(
-			new Rpc({
-				cache: null,
-				env: env as Worker.Env,
-				executionContext: createExecutionContext()
-			}),
-			{ headers }
-		);
+		rpc = testContext(() => {
+			return app.rpcProxy.createTestCaller(new Rpc(), { headers });
+		});
 	});
 
 	it('$getByEmail', async () => {

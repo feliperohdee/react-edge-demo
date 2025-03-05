@@ -1,11 +1,11 @@
 import app from 'react-edge/app';
 
+import { App } from '@/types';
 import { withLayout } from '@/app/libs/utils';
 import appPage from '@/app/pages/app';
 import mainLayout from '@/app/layout-main';
-import types from '@/types';
 
-const appRoutes: types.App.RouteGroup = app.createRouteGroup({
+const appRoutes: App.RouteGroup = app.createRouteGroup({
 	path: '/app',
 	middlewares: async ({ rpc, defaultResponseHeaders, store }) => {
 		const { body, headers, ok } = await rpc.sessions.get.asObject(true);

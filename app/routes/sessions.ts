@@ -1,11 +1,11 @@
 import app from 'react-edge/app';
 
+import { App } from '@/types';
 import { withLayout } from '@/app/libs/utils';
 import mainLayout from '@/app/layout-main';
 import signinPage from '@/app/pages/signin';
-import types from '@/types';
 
-const signinRoute: types.App.Route = app.createRoute({
+const signinRoute: App.Route = app.createRoute({
 	path: '/signin',
 	handler: {
 		middlewares: async ({ rpc }) => {
@@ -29,7 +29,7 @@ const signinRoute: types.App.Route = app.createRoute({
 	}
 });
 
-const signoutRoute: types.App.Route = app.createRoute({
+const signoutRoute: App.Route = app.createRoute({
 	path: '/signout',
 	handler: {
 		redirect: async ({ rpc }) => {

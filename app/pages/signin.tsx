@@ -2,14 +2,14 @@ import app from 'react-edge/app';
 import HttpError from 'use-http-error';
 import { toast } from 'use-sonner';
 
+import { App } from '@/types';
 import { Button } from '@/app/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/app/components/ui/card';
 import { Input } from '@/app/components/ui/input';
 import { Label } from '@/app/components/ui/label';
-import types from '@/types';
 
 const SigninPage = () => {
-	const signin = app.useLazyFetch(async ({ rpc }: types.App.Context, payload: types.App.Form.SubmitPayload) => {
+	const signin = app.useLazyFetch(async ({ rpc }: App.Context, payload: App.Form.SubmitPayload) => {
 		if (payload.requiredErrorsCount > 0) {
 			return;
 		}
