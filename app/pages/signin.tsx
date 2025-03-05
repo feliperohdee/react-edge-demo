@@ -1,15 +1,14 @@
 import app from 'react-edge/app';
 import HttpError from 'use-http-error';
+import { toast } from 'use-sonner';
 
 import { Button } from '@/app/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/app/components/ui/card';
 import { Input } from '@/app/components/ui/input';
 import { Label } from '@/app/components/ui/label';
-import { useToast } from '@/app/hooks/use-toast';
 import types from '@/types';
 
 const SigninPage = () => {
-	const { toast } = useToast();
 	const signin = app.useLazyFetch(async ({ rpc }: types.App.Context, payload: types.App.Form.SubmitPayload) => {
 		if (payload.requiredErrorsCount > 0) {
 			return;
@@ -23,10 +22,8 @@ const SigninPage = () => {
 
 			location.reload();
 		} catch (err) {
-			toast({
-				title: __('Authentication failed'),
-				description: (err as HttpError).message,
-				variant: 'destructive'
+			toast.error(__('Authentication failed'), {
+				description: (err as HttpError).message
 			});
 		}
 	});

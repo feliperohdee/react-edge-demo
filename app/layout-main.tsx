@@ -1,10 +1,14 @@
-import { ReactNode } from 'react';
+import { ReactNode, useEffect } from 'react';
+import { Toaster, toast } from 'use-sonner';
 import app from 'react-edge/app';
 
-import { Toaster } from '@/app/components/ui/toaster';
 import icon from '/icon.png';
 
 const Layout = ({ children }: { children: ReactNode }) => {
+	useEffect(() => {
+		toast.info('Welcome to the React Edge Demo');
+	}, []);
+
 	return (
 		<>
 			<app.Helmet>
@@ -20,7 +24,10 @@ const Layout = ({ children }: { children: ReactNode }) => {
 				/>
 			</app.Helmet>
 			{children}
-			<Toaster />
+			<Toaster
+				richColors
+				theme='dark'
+			/>
 		</>
 	);
 };
