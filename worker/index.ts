@@ -12,9 +12,7 @@ const handler = {
 		const url = new URL(request.url);
 
 		if (url.pathname === '/favicon.ico') {
-			return new Response(null, {
-				status: 200
-			});
+			return new Response(null, { status: 200 });
 		}
 
 		const lang = (() => {
