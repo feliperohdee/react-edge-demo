@@ -1,7 +1,7 @@
 import { ReactNode, useEffect } from 'react';
-import { Toaster, toast } from 'use-sonner';
 import app from 'react-edge/app';
 
+import { Toastr, toast } from '@/app/components/toastr';
 import icon from '/icon.png';
 
 const Layout = ({ children }: { children: ReactNode }) => {
@@ -24,7 +24,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
 				/>
 			</app.Helmet>
 			{children}
-			<Toaster
+			<Toastr
 				richColors
 				theme='dark'
 			/>

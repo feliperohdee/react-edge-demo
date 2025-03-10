@@ -17,16 +17,17 @@
 		"prettier-plugin-tailwindcss": "^0.6.11",
 		"react": "^19.0.0",
 		"react-dom": "^19.0.0",
-		"react-edge": "^0.1.132",
+		"react-edge": "^0.1.142",
 		"tailwind-merge": "^2.4.0",
 		"tailwindcss": "^4.0.9",
 		"tailwindcss-animate": "^1.0.7",
 		"typescript": "^5.7.3",
 		"typescript-eslint": "^8.24.0",
 		"use-http-error": "^1.0.5",
-		"use-sonner": "^1.0.6",
+		"use-toastr": "^1.0.1",
 		"use-zod-default": "^1.0.4",
 		"vite": "^6.1.0",
+		"vite-bundle-analyzer": "^0.17.1",
 		"wrangler": "^3.109.1",
 		"zod": "^3.23.8"
 	},
@@ -43,5 +44,8 @@
 		"type-check": "yarn edge type-check"
 	},
 	"type": "module",
-	"version": "1.0.0"
+	"version": "1.0.0",
+	"devDependencies": {
+		"remove": "^0.1.5"
+	}
 }
