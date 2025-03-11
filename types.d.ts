@@ -9,8 +9,6 @@ declare namespace App {
 	type RouteGroup = App.RouteGroup<Rpc> extends App.RouteGroup<infer T> ? App.RouteGroup<T> : never;
 	type Router = App.Router<Rpc> extends App.Router<infer T> ? App.Router<T> : never;
 	type WorkerContext = App.WorkerContext<Rpc> extends App.WorkerContext<infer T> ? App.WorkerContext<T> : never;
-
-	export import Form = App.Form;
 }
 
 declare namespace Libs {

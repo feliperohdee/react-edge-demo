@@ -1,4 +1,5 @@
 import app from 'react-edge/app';
+import Form from 'use-lite-form';
 import HttpError from 'use-http-error';
 
 import { App } from '@/types';
@@ -9,7 +10,7 @@ import { Label } from '@/app/components/ui/label';
 import { toast } from '@/app/components/toastr';
 
 const SigninPage = () => {
-	const signin = app.useLazyFetch(async ({ rpc }: App.Context, payload: App.Form.SubmitPayload) => {
+	const signin = app.useLazyFetch(async ({ rpc }: App.Context, payload: Form.SubmitPayload) => {
 		if (payload.requiredErrorsCount > 0) {
 			return;
 		}
@@ -30,7 +31,7 @@ const SigninPage = () => {
 
 	return (
 		<div className='flex min-h-screen items-center justify-center bg-slate-900'>
-			<app.Form
+			<Form
 				onSubmit={signin.fetch}
 				value={{
 					email: 'user@user.com',
@@ -47,7 +48,7 @@ const SigninPage = () => {
 						<div className='space-y-4'>
 							<div className='space-y-2'>
 								<Label htmlFor='email'>{__('Email')}</Label>
-								<app.Form.Item
+								<Form.Item
 									path={['email']}
 									required
 								>
@@ -55,11 +56,11 @@ const SigninPage = () => {
 										autoComplete='email'
 										type='email'
 									/>
-								</app.Form.Item>
+								</Form.Item>
 							</div>
 							<div className='space-y-2'>
 								<Label htmlFor='password'>{__('Password')}</Label>
-								<app.Form.Item
+								<Form.Item
 									path={['password']}
 									required
 								>
@@ -68,7 +69,7 @@ const SigninPage = () => {
 										type='password'
 										placeholder='••••••••'
 									/>
-								</app.Form.Item>
+								</Form.Item>
 							</div>
 						</div>
 					</CardContent>
@@ -92,7 +93,7 @@ const SigninPage = () => {
 						</p>
 					</CardFooter>
 				</Card>
-			</app.Form>
+			</Form>
 		</div>
 	);
 };
