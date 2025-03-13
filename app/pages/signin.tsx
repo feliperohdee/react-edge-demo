@@ -1,3 +1,4 @@
+import { toast } from 'use-toastr';
 import app from 'react-edge/app';
 import Form from 'use-lite-form';
 import HttpError from 'use-http-error';
@@ -7,7 +8,6 @@ import { Button } from '@/app/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/app/components/ui/card';
 import { Input } from '@/app/components/ui/input';
 import { Label } from '@/app/components/ui/label';
-import { toast } from '@/app/components/toastr';
 
 const SigninPage = () => {
 	const signin = app.useLazyFetch(async ({ rpc }: App.Context, payload: Form.SubmitPayload) => {

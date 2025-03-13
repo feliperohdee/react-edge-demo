@@ -1,7 +1,7 @@
 import { ReactNode, useEffect } from 'react';
+import { Toastr, toast } from 'use-toastr';
 import app from 'react-edge/app';
 
-import { Toastr, toast } from '@/app/components/toastr';
 import icon from '/icon.png';
 
 const Layout = ({ children }: { children: ReactNode }) => {
