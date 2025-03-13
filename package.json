@@ -47,8 +47,5 @@
 		"type-check": "yarn edge type-check"
 	},
 	"type": "module",
-	"version": "1.0.0",
-	"devDependencies": {
-		"remove": "^0.1.5"
-	}
+	"version": "1.0.0"
 }
