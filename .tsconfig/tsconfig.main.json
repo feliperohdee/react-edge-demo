@@ -15,7 +15,7 @@
 		"skipLibCheck": true,
 		"strict": true,
 		"target": "ESNext",
-		"types": ["node", "vite/client", "@cloudflare/workers-types/2023-07-01", "react-edge/types.global"]
+		"types": ["node", "vite/client", "react-edge/types.global", "../worker-configuration.d.ts"]
 	},
 	"include": ["../api", "../app", "../libs", "../i18n", "../worker"]
 }

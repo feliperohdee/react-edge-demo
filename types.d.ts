@@ -17,9 +17,7 @@ declare namespace Libs {
 }
 
 declare namespace Worker {
-	interface Env extends Worker.Env {
-		// add your cloudflare env variables here
-	}
+	interface Env extends Cloudflare.Env {}
 
 	export import AuthBasic = Worker.AuthBasic;
 	export import AuthBearer = Worker.AuthBearer;
