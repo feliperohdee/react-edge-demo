@@ -35,7 +35,7 @@ describe('@/api/rpc/app', () => {
 							args: [],
 							batch: false,
 							resource: 'app.getSessionData',
-							responseType: ''
+							responseType: 'default'
 						}
 					},
 					message: 'Unauthorized',
