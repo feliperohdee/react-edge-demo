@@ -10,7 +10,7 @@ import { Input } from '@/app/components/ui/input';
 import { Label } from '@/app/components/ui/label';
 
 const SigninPage = () => {
-	const signin = app.useLazyFetch(async ({ rpc }: App.Context, payload: Form.SubmitPayload) => {
+	const signin = app.useLazyFetchRpc(async ({ rpc }: App.Context, payload: Form.SubmitPayload) => {
 		if (payload.requiredErrorsCount > 0) {
 			return;
 		}

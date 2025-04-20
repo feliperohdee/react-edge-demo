@@ -1,10 +1,25 @@
+import HttpError from 'use-http-error';
 import libs from 'react-edge/libs';
 import worker from 'react-edge/worker';
+import z from 'zod';
 
 import App from '@/api/rpc/app';
 import Sessions from '@/api/rpc/sessions';
 import Users from '@/api/rpc/users';
 import workerContext from '@/worker/context';
+
+worker.Rpc.setErrorTransformer((rpc, err) => {
+	if (err instanceof z.ZodError) {
+		return new HttpError(400, 'Invalid request', {
+			context: {
+				errors: err.errors,
+				rpc
+			}
+		});
+	}
+
+	return worker.Rpc.defaultErrorTransformer(rpc, err);
+});
 
 class Rpc extends worker.Rpc {
 	public app: App;
@@ -12,7 +27,27 @@ class Rpc extends worker.Rpc {
 	public users: Users;
 
 	constructor() {
-		super({ cache: workerContext.store.cache });
+		const cache = new worker.EdgeCache({
+			cache: caches.default,
+			config: {
+				dev: {
+					api: {
+						host: 'localhost',
+						port: 3000
+					},
+					vite: {
+						host: 'localhost',
+						port: 5173
+					}
+				},
+				defaultCacheControl: 'no-cache',
+				version: '1.0.0'
+			},
+			executionContext: workerContext.store.executionContext,
+			host: 'localhost'
+		});
+
+		super({ cache });
 
 		// authenticated rpc instances
 		this.app = new App(this);

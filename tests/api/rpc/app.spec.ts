@@ -29,7 +29,15 @@ describe('@/api/rpc/app', () => {
 				throw new Error('Expected to throw');
 			} catch (err) {
 				expect((err as HttpError).toJson()).toEqual({
-					context: { auth: 'Cookie error="inexistent_token"' },
+					context: {
+						auth: 'Cookie error="inexistent_token"',
+						rpc: {
+							args: [],
+							batch: false,
+							resource: 'app.getSessionData',
+							responseType: ''
+						}
+					},
 					message: 'Unauthorized',
 					stack: [],
 					status: 401
@@ -57,7 +65,7 @@ describe('@/api/rpc/app', () => {
 				},
 				headers: {
 					'content-type': 'application/json',
-					'edge-rpc-response-type': 'object'
+					'rpc-response-type': 'object'
 				},
 				ok: true,
 				status: 200

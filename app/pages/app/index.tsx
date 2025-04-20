@@ -3,7 +3,7 @@ import app from 'react-edge/app';
 import type { App } from '@/types';
 
 const Index = () => {
-	const sessionData = app.useFetch((ctx: App.Context) => {
+	const sessionData = app.useFetchRpc((ctx: App.Context) => {
 		return ctx.rpc.app.getSessionData();
 	});
 

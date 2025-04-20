@@ -8,11 +8,11 @@ import type { App } from '@/types';
 const IndexPage = () => {
 	const [loadedCount, setLoadedCount] = useState(0);
 	const [text, setText] = useState<string[]>([]);
-	const connectionData = app.useFetch((ctx: App.Context) => {
+	const connectionData = app.useFetchRpc((ctx: App.Context) => {
 		return ctx.rpc.getConnectionData();
 	});
 
-	const stream = app.useFetch(
+	const stream = app.useFetchRpc(
 		(ctx: App.Context) => {
 			return ctx.rpc.getHelloWorldAsStream.asResponse();
 		},
