@@ -3,14 +3,15 @@ import app from 'react-edge/app';
 import Form from 'use-lite-form';
 import HttpError from 'use-http-error';
 
-import { App } from '@/types';
 import { Button } from '@/app/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/app/components/ui/card';
 import { Input } from '@/app/components/ui/input';
 import { Label } from '@/app/components/ui/label';
+import type Rpc from '@/api/rpc';
 
 const SigninPage = () => {
-	const signin = app.useLazyFetchRpc(async ({ rpc }: App.Context, payload: Form.SubmitPayload) => {
+	const { lazyFetchRpc } = app.useFetchRpc<Rpc>();
+	const signin = lazyFetchRpc(async ({ rpc }, payload: Form.SubmitPayload) => {
 		if (payload.requiredErrorsCount > 0) {
 			return;
 		}

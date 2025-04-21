@@ -4,7 +4,6 @@ import type Rpc from '@/api/rpc';
 declare type Config = Config;
 
 declare namespace App {
-	type Context = App.Context<Rpc> extends App.Context<infer T> ? App.Context<T> : never;
 	type Route = App.Route<Rpc> extends App.Route<infer T> ? App.Route<T> : never;
 	type RouteGroup = App.RouteGroup<Rpc> extends App.RouteGroup<infer T> ? App.RouteGroup<T> : never;
 	type Router = App.Router<Rpc> extends App.Router<infer T> ? App.Router<T> : never;

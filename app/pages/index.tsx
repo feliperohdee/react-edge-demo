@@ -3,18 +3,20 @@ import app from 'react-edge/app';
 import libs from 'react-edge/libs';
 
 import logo from '@/app/assets/cf-logo.png';
-import type { App } from '@/types';
+import type Rpc from '@/api/rpc';
 
 const IndexPage = () => {
 	const [loadedCount, setLoadedCount] = useState(0);
 	const [text, setText] = useState<string[]>([]);
-	const connectionData = app.useFetchRpc((ctx: App.Context) => {
-		return ctx.rpc.getConnectionData();
+	
+	const { fetchRpc } = app.useFetchRpc<Rpc>();
+	const connectionData = fetchRpc(async ({ rpc }) => {
+		return rpc.getConnectionData();
 	});
 
-	const stream = app.useFetchRpc(
-		(ctx: App.Context) => {
-			return ctx.rpc.getHelloWorldAsStream.asResponse();
+	const stream = fetchRpc(
+		async ({ rpc }) => {
+			return rpc.getHelloWorldAsStream.asResponse();
 		},
 		{
 			shouldFetch: ({ worker }) => {

@@ -1,10 +1,11 @@
 import app from 'react-edge/app';
 
-import type { App } from '@/types';
+import type Rpc from '@/api/rpc';
 
 const Index = () => {
-	const sessionData = app.useFetchRpc((ctx: App.Context) => {
-		return ctx.rpc.app.getSessionData();
+	const { fetchRpc } = app.useFetchRpc<Rpc>();
+	const sessionData = fetchRpc(async ({ rpc }) => {
+		return rpc.app.getSessionData();
 	});
 
 	return (
