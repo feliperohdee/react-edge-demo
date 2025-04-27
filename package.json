@@ -18,7 +18,7 @@
 		"prettier-plugin-tailwindcss": "^0.6.11",
 		"react": "^19.0.0",
 		"react-dom": "^19.0.0",
-		"react-edge": "^0.1.186",
+		"react-edge": "^0.1.187",
 		"tailwind-merge": "^2.4.0",
 		"tailwindcss": "^4.0.9",
 		"tailwindcss-animate": "^1.0.7",
@@ -31,7 +31,7 @@
 		"vite": "^6.2.1",
 		"vite-bundle-analyzer": "^0.17.1",
 		"vitest": "2.1.8",
-		"wrangler": "^4.9.0",
+		"wrangler": "^4.13.2",
 		"zod": "^3.23.8"
 	},
 	"license": "MIT",
