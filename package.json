@@ -26,7 +26,7 @@
 		"typescript-eslint": "^8.26.1",
 		"use-http-error": "^1.0.6",
 		"use-lite-form": "^1.0.12",
-		"use-toastr": "^1.0.3",
+		"use-toastr": "^1.0.4",
 		"use-zod-default": "^1.0.10",
 		"vite": "^6.2.1",
 		"vite-bundle-analyzer": "^0.17.1",
