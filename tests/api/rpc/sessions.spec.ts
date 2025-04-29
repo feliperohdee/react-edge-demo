@@ -106,7 +106,7 @@ describe('@/api/rpc/sessions', () => {
 			const res = await rpc.sessions.signout.asObject();
 
 			expect(res).toEqual({
-				body: null,
+				body: {},
 				headers: {
 					'content-type': 'application/json',
 					'rpc-response-type': 'object',
