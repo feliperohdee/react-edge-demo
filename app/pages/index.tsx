@@ -8,7 +8,7 @@ import type Rpc from '@/api/rpc';
 const IndexPage = () => {
 	const [loadedCount, setLoadedCount] = useState(0);
 	const [text, setText] = useState<string[]>([]);
-	
+
 	const { fetchRpc } = app.useFetchRpc<Rpc>();
 	const connectionData = fetchRpc(async ({ rpc }) => {
 		return rpc.getConnectionData();
