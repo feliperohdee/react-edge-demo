@@ -18,7 +18,7 @@
 		"prettier-plugin-tailwindcss": "^0.6.11",
 		"react": "^19.0.0",
 		"react-dom": "^19.0.0",
-		"react-edge": "^0.1.198",
+		"react-edge": "^0.1.199",
 		"tailwind-merge": "^2.4.0",
 		"tailwindcss": "^4.0.9",
 		"tailwindcss-animate": "^1.0.7",
