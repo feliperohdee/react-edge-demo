@@ -11,7 +11,7 @@ import type Rpc from '@/api/rpc';
 
 const SigninPage = () => {
 	const { lazyFetchRpc } = app.useFetchRpc<Rpc>();
-	const signin = lazyFetchRpc(async ({ rpc }, payload: Form.SubmitPayload) => {
+	const signin = lazyFetchRpc(async ({ rpc }, payload: Form.Payload) => {
 		if (payload.requiredErrorsCount > 0) {
 			return;
 		}
