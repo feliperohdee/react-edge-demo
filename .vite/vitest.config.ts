@@ -1,11 +1,14 @@
 import path from 'path';
-import vite from 'react-edge/vite';
 
 const root = process.cwd();
-const viteConfig = vite.test({
-	// not load entire project just for unit tests
-	inputPath: path.resolve(root, 'worker/index-test.ts'),
-	wranglerPath: path.resolve(root, 'wrangler.jsonc')
-});
+const viteConfig = {
+	test: {
+		coverage: {
+			provider: 'istanbul',
+			reportsDirectory: path.resolve(root, '.coverage')
+		},
+		projects: [path.resolve(root, '.vite/vitest.config.worker.ts'), path.resolve(root, '.vite/vitest.config.dom.ts')]
+	}
+};
 
 export default viteConfig;
