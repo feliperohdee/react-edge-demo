@@ -2,7 +2,7 @@ import app from 'react-edge/app';
 
 import { App } from '@/types';
 import { withLayout } from '@/app/libs/utils';
-import appPage from '@/app/pages/app';
+import appPage from '@/app/pages';
 import mainLayout from '@/app/layout-main';
 
 const appRoutes: App.RouteGroup = app.createRouteGroup({
