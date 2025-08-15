@@ -21,7 +21,7 @@ class Rpc extends worker.Rpc {
 			if (err instanceof z.ZodError) {
 				return new HttpError(400, 'Invalid request', {
 					context: {
-						errors: err.errors,
+						errors: err.issues,
 						rpc
 					}
 				});

@@ -1,7 +1,7 @@
-import z from 'zod';
+import z from 'zod/v4';
 
 const user = z.object({
-	email: z.string().email(),
+	email: z.email(),
 	id: z.string(),
 	name: z.string(),
 	namespace: z.string(),

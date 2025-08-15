@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import HttpError from 'use-http-error';
 import worker from 'react-edge/worker';
-import zDefault from 'use-zod-default';
+import zDefault from 'use-zod-default/v4';
 
 import type Rpc from '@/api/rpc';
 import schema, { Users } from '@/api/rpc/users-schema';

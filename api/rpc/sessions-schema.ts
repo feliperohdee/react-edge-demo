@@ -1,7 +1,7 @@
-import z from 'zod';
+import z from 'zod/v4';
 
 const session = z.object({
-	email: z.string().email(),
+	email: z.email(),
 	name: z.string(),
 	namespace: z.string(),
 	exp: z.number(),
@@ -9,7 +9,7 @@ const session = z.object({
 });
 
 const sessionSigninInput = z.object({
-	email: z.string().email(),
+	email: z.email(),
 	password: z.string()
 });
 
