@@ -1,6 +1,6 @@
 import HttpError from 'use-http-error';
 import worker from 'react-edge/worker';
-import zDefault from 'use-zod-default/v4';
+import zDefault from 'use-zod-default';
 
 import { JWT_SECRET } from '@/api/constants';
 import { Worker } from '@/types';
